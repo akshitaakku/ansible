@@ -1,0 +1,10 @@
+---
+ - name: we are creating this playbook for adding multiple user 
+   hosts: dev
+   vars:
+     - my_user: charu
+   tasks:
+     - name: adding user through variable
+       user:
+         name: "{{ my_user }}"
+         state: present

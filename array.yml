@@ -1,0 +1,27 @@
+---
+ - name: defining loop
+   hosts: all
+   vars:
+   tasks:
+     - user: 
+         name: "{{ item }}"
+         state: present
+       loop:
+         - devops
+         - developer
+         - testing
+     - user: 
+         name: "{{ item.name }}"
+         group: "{{ item.group }}"
+         comment: "{{ item.comment }}"
+         state: present
+       loop: 
+         - name: akshita
+           group: devops
+           comment: 'akshita is an devops tranie'
+         - name: kholi
+           group: developer
+           comment: 'kholi is an devops developer'
+         - name: yuvraj
+           group: testing
+           comment: 'testing is an devops tester'

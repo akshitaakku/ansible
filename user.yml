@@ -1,0 +1,19 @@
+---
+ - name: we are creating this playbook for adding user on dev host
+   hosts: dev
+   tasks: 
+     - name: adding group fun
+       group:
+         name: fun
+         state: present
+     - name: adding user khoj
+       user: 
+         name: akshita
+         state: present
+ - name: we are creating a group on all host
+   hosts: all
+   tasks:
+     - name: add a group
+       group:  
+         name: test
+         state: present

@@ -1,0 +1,22 @@
+---
+ - name: host a website with the help of webserver
+   hosts: all
+   tasks:
+     - yum:
+         name: httpd
+         state: present
+     - service: 
+         name: httpd
+         state: started
+         enabled: yes
+     - lineinfile: 
+         path: /var/www/html/index.html
+         line: "{{ ansible_facts.hostname }}"
+         create: yes
+     - template:
+         src: abc.conf.j2
+         dest: /etc/httpd/conf.d/abc.conf
+     - service:
+         name: httpd
+         state: restarted
+

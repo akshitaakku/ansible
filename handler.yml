@@ -1,0 +1,13 @@
+---
+ - name: defining loop
+   hosts: all
+   force_handlers: yes     #this for force
+   tasks:
+     - yum: 
+         name: noteapakage
+         state: latest
+       ignore_errors: yes
+     - file:
+         name: make a new file
+         path: /akshita
+         state: touch

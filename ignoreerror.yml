@@ -1,0 +1,12 @@
+---
+ - name: dupdate pakage
+   hosts: all
+   tasks:
+     - yum: 
+         name: noteapakage
+         state: present
+       ignore_errors: yes
+     - file:
+         name: make a new file
+         path: /akshita
+         state: touch

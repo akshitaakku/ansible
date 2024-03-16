@@ -1,0 +1,32 @@
+- name: configure webserver
+  hosts: all
+  tasks: 
+     - name: install httpd
+       yum:
+         name: httpd
+         state: present
+     - name: start httpd service
+       service:
+         name: httpd
+         state: started
+         enabled: yes
+     - name: install firewall
+       yum:
+         name: firewalld
+         state: present
+     - name: start firewalld
+       service:
+         name: firewalld
+         state: started
+         enabled: yes
+     - name: create index.html
+       lineinfile:
+         path: /var/www/html/index.html
+         line: "this is a webserver"
+         create: yes
+     - name: allow httpd in firewall
+       firewalld:
+         service: http
+         state: enabled
+         permanent: yes
+         immediate: yes
